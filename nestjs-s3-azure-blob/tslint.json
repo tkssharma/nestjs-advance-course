@@ -1,0 +1,11 @@
+{
+  "extends": [
+    "./tslint.rules.json"
+  ],
+  "linterOptions": {
+    "exclude": ["**/*.spec.ts", "**/*.e2e-spec.ts", "src/migrations/*.ts"]
+  },
+  "rulesDirectory": [
+    "node_modules/tslint-eslint-rules/dist/rules"
+  ]
+}

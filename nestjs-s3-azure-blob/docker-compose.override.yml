@@ -1,0 +1,23 @@
+version: "3.6"
+services:
+  node:
+    container_name: starter_node
+    command: npm run start:debug
+    environment:
+      NPM_INSTALL: ENABLE
+      TYPEORM_MIGRATION: ENABLE
+    ports:
+      - 3000:3000
+      - 5858:5858
+  postgres:
+    environment:
+      - POSTGRES_USER=api
+      - POSTGRES_PASSWORD=development_pass
+      - POSTGRES_MULTIPLE_DATABASES="starter-api","starter-api-testing"
+    volumes:
+      - ./docker-utils:/docker-entrypoint-initdb.d
+      - starter_api_data:/data/postgres
+    ports:
+      - 5432:5432
+volumes:
+  starter_api_data: {}
