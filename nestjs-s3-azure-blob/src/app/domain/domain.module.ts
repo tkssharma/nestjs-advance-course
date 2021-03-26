@@ -1,8 +1,10 @@
 import { MiddlewareConsumer, Module, NestModule, RequestMethod, Type } from '@nestjs/common';
+import { MulterModule } from '@nestjs/platform-express';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import * as fs from 'fs';
 import * as path from 'path';
-import { AuthenticationController } from './controller/user.controller';
+import { UploadController } from './controller/upload.controller';
+import { UploadProcessController } from './controller/upload.controller.process';
 
 export const ALL_ENTITIES = fs.readdirSync(path.join(path.dirname(__filename), 'entities'))
   .filter((file) => (path.extname(file) === '.js' || path.extname(file) === '.ts') && !file.endsWith('.d.ts'))
@@ -15,8 +17,11 @@ export const ALL_SERVICES = fs.readdirSync(path.join(path.dirname(__filename), '
 
 @Module({
   imports: [
+    MulterModule.register({
+      dest: './files',
+    }),
   ],
-  controllers: [AuthenticationController],
+  controllers: [UploadProcessController, UploadController],
   providers: [
     ...ALL_SERVICES,
   ],
