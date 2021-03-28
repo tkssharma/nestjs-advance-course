@@ -1,0 +1,392 @@
+{
+  "$schema": "http://json.schemastore.org/tslint",
+  "extends": [
+    "tslint:recommended",
+    "tslint-sonarts",
+    "tslint-consistent-codestyle",
+    "tslint-clean-code"
+  ],
+  "rules": {
+    "naming-convention": [
+      true,
+      {
+        "type": "default",
+        "format": "camelCase",
+        "leadingUnderscore": "forbid",
+        "trailingUnderscore": "forbid"
+      },
+      {
+        "type": "variable",
+        "modifiers": [
+          "global",
+          "const"
+        ],
+        "format": [
+          "allow-snake-case",
+          "camelCase",
+          "PascalCase",
+          "snake_case",
+          "UPPER_CASE"
+        ]
+      },
+      {
+        "type": "variable",
+        "modifiers": [
+          "export",
+          "const"
+        ],
+        "format": ["UPPER_CASE", "camelCase", "PascalCase"]
+      },
+      {
+        "type": "functionVariable",
+        "modifiers": [
+          "export",
+          "const"
+        ],
+        "format": ["camelCase","allow-snake-case"]
+      },
+      {
+        "type": "parameter",
+        "modifiers": "unused",
+        "format": ["camelCase","allow-snake-case"],
+        "leadingUnderscore": "allow"
+      },
+      {
+        "type": "member",
+        "modifiers": "private"
+      },
+      {
+        "type": "member",
+        "modifiers": "protected"
+      },
+      {
+        "type": "method",
+        "filter": "^toJSON$",
+        "format": null
+      },
+      {
+        "type": "property",
+        "modifiers": [
+          "public",
+          "static",
+          "const"
+        ],
+        "format": ["camelCase","allow-snake-case"]
+      },
+      {
+        "type": "type",
+        "format": "PascalCase"
+      },
+      {
+        "type": "class",
+        "modifiers": "abstract",
+        "prefix": ["Abstract", "Base"]
+      },
+      {
+        "type": "genericTypeParameter",
+        "prefix": "T"
+      },
+      {
+        "type": "enumMember",
+        "format": "PascalCase"
+      },
+      {
+        "type": "function",
+        "regex": "^((?!And).)*$",
+        "format": "strictCamelCase",
+        "leadingUnderscore": "forbid",
+        "trailingUnderscore": "forbid"
+      },
+      {
+        "type": "method",
+        "regex": "^((?!And).)*$",
+        "format": "strictCamelCase",
+        "leadingUnderscore": "forbid",
+        "trailingUnderscore": "forbid"
+      },
+      {
+        "type": "class",
+        "format": "StrictPascalCase",
+        "leadingUnderscore": "forbid",
+        "trailingUnderscore": "forbid"
+      }
+    ],
+    "interface-name": false,
+    "const-parameters": true,
+    "early-exit": true,
+    "no-as-type-assertion": false,
+    "no-accessor-recursion": true,
+    "no-collapsible-if": true,
+    "no-else-after-return": true,
+    "no-return-undefined": true,
+    "no-static-this": true,
+    "no-unnecessary-else": true,
+    "no-unnecessary-type-annotation": true,
+    "no-unused": false,
+    "no-var-before-return": true,
+    "object-shorthand-properties-first": true,
+    "prefer-const-enum": true,
+    "try-catch-first": true,
+    "no-flag-args": true,
+    "no-for-each-push": true,
+    "no-map-without-usage": true,
+    "no-commented-out-code": true,
+    "max-file-line-count": [
+      true,
+      300
+    ],
+    "no-consecutive-blank-lines": true,
+    "ter-max-len": [
+      true,
+      {
+        "code": 140,
+        "tabWidth": 2,
+        "ignoreTrailingComments": true,
+        "ignoreUrls": true
+      }
+    ],
+    "trailing-comma": [
+      true,
+      {
+        "multiline": "always",
+        "singleline": "never"
+      }
+    ],
+    "no-conditional-assignment": true,
+    "no-duplicate-case": true,
+    "no-extra-semi": true,
+    "no-inner-declarations": [
+      true,
+      "both"
+    ],
+    "ter-no-irregular-whitespace": [
+      true
+    ],
+    "no-unexpected-multiline": true,
+    "valid-jsdoc": [
+      true,
+      {
+        "prefer": {
+          "return": "returns"
+        },
+        "requireReturn": false,
+        "requireReturnDescription": true,
+        "requireReturnType": false,
+        "requireParamDescription": true,
+        "requireParamType": false,
+        "matchDescription": "^[A-Z][A-Za-z0-9\\s\\{\\}\\@.,]*[.]$"
+      }
+    ],
+    "valid-typeof": true,
+    "cyclomatic-complexity": [
+      true,
+      10
+    ],
+    "switch-default": true,
+    "handle-callback-err": true,
+    "array-bracket-spacing": [
+      true,
+      "never",
+      {
+        "arraysInArrays": false
+      }
+    ],
+    "block-spacing": [
+      true,
+      "always"
+    ],
+    "eofline": true,
+    "ter-computed-property-spacing": [
+      true,
+      "never"
+    ],
+    "ter-func-call-spacing": [
+      true,
+      "never"
+    ],
+    "linebreak-style": [
+      true,
+      "LF"
+    ],
+    "no-trailing-whitespace": [
+      true,
+      "ignore-comments"
+    ],
+    "quotemark": [
+      true,
+      "single",
+      "avoid-escape"
+    ],
+    "semicolon": [
+      true,
+      "always"
+    ],
+    "no-var-requires": false,
+    "class-name": true,
+    "comment-format": [
+      true,
+      "check-space"
+    ],
+    "forin": true,
+    "indent": [
+      true,
+      "spaces",
+      2
+    ],
+    "label-position": true,
+    "max-line-length": [
+      true,
+      140
+    ],
+    "member-access": true,
+    "member-ordering": [
+      true,
+      {
+        "order": [
+          "public-instance-method"
+        ]
+      }
+    ],
+    "no-arg": true,
+    "no-bitwise": true,
+    "no-console": [
+      true,
+      "log",
+      "error",
+      "debug",
+      "info",
+      "time",
+      "timeEnd",
+      "trace"
+    ],
+    "no-construct": true,
+    "no-debugger": true,
+    "no-duplicate-variable": true,
+    "no-empty": true,
+    "no-eval": true,
+    "no-inferrable-types": false,
+    "no-shadowed-variable": false,
+    "no-string-literal": true,
+    "no-switch-case-fall-through": true,
+    "no-unused-expression": true,
+    "no-var-keyword": true,
+    "object-literal-sort-keys": false,
+    "no-for-in-array": true,
+    "only-arrow-functions": [
+      true,
+      "allow-declarations",
+      "allow-named-functions"
+    ],
+    "one-line": [
+      true,
+      "check-open-brace",
+      "check-catch",
+      "check-else",
+      "check-finally",
+      "check-whitespace"
+    ],
+    "radix": true,
+    "triple-equals": [
+      true,
+      "allow-null-check"
+    ],
+    "typedef-whitespace": [
+      true,
+      {
+        "call-signature": "nospace",
+        "index-signature": "nospace",
+        "parameter": "nospace",
+        "property-declaration": "nospace",
+        "variable-declaration": "nospace"
+      }
+    ],
+    "variable-name": false,
+    "whitespace": [
+      true,
+      "check-branch",
+      "check-decl",
+      "check-operator",
+      "check-separator",
+      "check-type"
+    ],
+    "max-classes-per-file": [
+      false,
+      5,
+      "exclude-class-expressions"
+    ],
+    "cognitive-complexity": [
+      true,
+      10
+    ],
+    "consecutive-overloads": true,
+    "max-union-size": true,
+    "mccabe-complexity": true,
+    "no-accessor-field-mismatch": true,
+    "no-all-duplicated-branches": true,
+    "no-array-delete": true,
+    "no-big-function": [
+      true,
+      30
+    ],
+    "no-case-with-or": true,
+    "no-collection-size-mischeck": true,
+    "no-dead-store": true,
+    "no-duplicate-in-composite": true,
+    "no-duplicate-string": true,
+    "no-duplicated-branches": true,
+    "no-element-overwrite": true,
+    "no-empty-destructuring": true,
+    "no-empty-nested-blocks": true,
+    "no-gratuitous-expressions": true,
+    "no-hardcoded-credentials": [
+      true,
+      "password",
+      "passwd",
+      "pwd",
+      "secret",
+      "token"
+    ],
+    "no-identical-conditions": true,
+    "no-identical-expressions": true,
+    "no-identical-functions": true,
+    "no-ignored-initial-value": true,
+    "no-ignored-return": true,
+    "no-in-misuse": true,
+    "no-inconsistent-return": true,
+    "no-invalid-await": true,
+    "no-inverted-boolean-check": true,
+    "no-misleading-array-reverse": true,
+    "no-misspelled-operator": true,
+    "no-multiline-string-literals": true,
+    "no-nested-incdec": true,
+    "no-nested-template-literals": true,
+    "no-redundant-boolean": true,
+    "no-redundant-jump": true,
+    "no-redundant-parentheses": true,
+    "no-return-type-any": true,
+    "no-same-line-conditional": true,
+    "no-self-assignment": true,
+    "no-small-switch": true,
+    "no-statements-same-line": true,
+    "no-unconditional-jump": true,
+    "no-undefined-argument": true,
+    "no-unenclosed-multiline-block": true,
+    "no-unthrown-error": true,
+    "no-unused-array": true,
+    "no-use-of-empty-return-value": true,
+    "no-useless-cast": true,
+    "no-useless-increment": true,
+    "no-useless-intersection": true,
+    "no-variable-usage-before-declaration": true,
+    "parameters-max-number": true,
+    "prefer-default-last": true,
+    "prefer-immediate-return": true,
+    "prefer-optional": true,
+    "prefer-promise-shorthand": true,
+    "use-primitive-type": true,
+    "use-type-alias": true
+  },
+  "rulesDirectory": [
+    "node_modules/tslint-eslint-rules/dist/rules"
+  ]
+}

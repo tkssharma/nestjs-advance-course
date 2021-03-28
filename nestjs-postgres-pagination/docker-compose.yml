@@ -1,0 +1,9 @@
+version: "3.6"
+services:
+  node:
+    build: .
+    volumes:
+      - .:/app
+  postgres:
+    image: postgres
+    restart: unless-stopped
