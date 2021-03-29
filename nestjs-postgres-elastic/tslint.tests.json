@@ -1,0 +1,24 @@
+{
+  "$schema": "http://json.schemastore.org/tslint",
+  "extends": [
+    "./tslint.rules.json"
+  ],
+  "rules": {
+    "no-unused-expression": false,
+    "no-big-function": false,
+    "no-string-literal": false,
+    "ter-max-len": [
+      true,
+      {
+        "code": 160,
+        "tabWidth": 2,
+        "ignoreTrailingComments": true,
+        "ignoreUrls": true
+      }
+    ],
+    "max-line-length": [true, 160]
+  },
+  "linterOptions": {
+    "include": ["**/*.spec.ts", "**/*.e2e-spec.ts"]
+  }
+}

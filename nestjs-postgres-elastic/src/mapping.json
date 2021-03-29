@@ -1,0 +1,69 @@
+{
+  "mappings": {
+    "properties": {
+      "email": {
+        "type": "text",
+        "fields": {
+          "keyword": {
+            "type": "keyword",
+            "ignore_above": 256
+          }
+        }
+      },
+      "tags": {
+        "properties": {
+          "tag": {
+            "type": "text",
+            "fields": {
+              "keyword": {
+                "type": "keyword",
+                "ignore_above": 256
+              }
+            }
+          }
+        }
+      },
+      "text": {
+        "type": "text",
+        "fields": {
+          "keyword": {
+            "type": "keyword",
+            "ignore_above": 256
+          }
+        }
+      },
+      "title": {
+        "type": "text",
+        "fields": {
+          "keyword": {
+            "type": "keyword",
+            "ignore_above": 256
+          }
+        },
+        "analyzer": "autocomplete",
+        "search_analyzer": "standard"
+      }
+    }
+  },
+"settings": {
+  "analysis": {
+    "filter": {
+      "autocomplete_filter": {
+        "type": "edge_ngram",
+        "min_gram": 1,
+        "max_gram": 20
+      }
+    },
+    "analyzer": {
+      "autocomplete": { 
+        "type": "custom",
+        "tokenizer": "standard",
+        "filter": [
+          "lowercase",
+          "autocomplete_filter"
+        ]
+      }
+    }
+  }
+}
+}
