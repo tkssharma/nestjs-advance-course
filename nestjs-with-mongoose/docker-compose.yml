@@ -11,22 +11,6 @@ services:
       - 27017:27017
     networks:
       - starter_network
-  starter_redis:
-    container_name: starter_redis
-    image: redis:4.0
-    volumes:
-      - redis_data:/var/lib/redis
-    ports:
-      - 6379:6379
-    restart: unless-stopped
-    networks:
-      - starter_network
-networks:
-  starter_network:
-    driver: bridge
-    name: starter_network
 volumes:
   mongo_data:
     name: global_mongo
-  redis_data:
-    name: global_redis

@@ -101,24 +101,8 @@ export class SearchService {
           match: {
             id: postId,
           }
-        }
-      }
-    })
-  }
-  public async search(text: string) {
-    const { body } = await this.esService.search<any>({
-      index: this.configService.get('ELASTICSEARCH_INDEX'),
-      body: {
-        query: {
-          multi_match: {
-            query: text,
-            fields: ['title', 'text', 'email'],
-          },
         },
       },
     });
-    console.log(body.hits.hits);
-    const hits = body.hits.hits;
-    return hits.map((item: any) => item._source);
   }
 }

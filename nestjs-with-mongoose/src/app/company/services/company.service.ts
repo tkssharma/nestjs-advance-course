@@ -1,9 +1,8 @@
 import { Injectable, InternalServerErrorException } from '@nestjs/common';
 import { Model } from 'mongoose';
 import { InjectModel } from '@nestjs/mongoose';
-import { CompanyDTO } from '@zr-consulting/zota-npm';
-import { Company } from '@zr-consulting/zota-npm';
-import { Role } from '@zr-consulting/zota-npm';
+import { Company } from '../model/company';
+import { CompanyDTO } from '../dto/company.dto';
 @Injectable()
 export class CompanyService {
   constructor(@InjectModel('company') private readonly companyModel: Model<Company>) { }

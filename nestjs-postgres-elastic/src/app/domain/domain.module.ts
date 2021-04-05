@@ -1,8 +1,11 @@
-import { MiddlewareConsumer, Module, NestModule, RequestMethod, Type } from '@nestjs/common';
+import { MiddlewareConsumer, Module, NestModule, RequestMethod, Type, CacheModule } from '@nestjs/common';
+import { EventEmitterModule } from '@nestjs/event-emitter';
+import { ScheduleModule } from '@nestjs/schedule';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import * as fs from 'fs';
 import * as path from 'path';
 import { DbModule } from '../../db/db.module';
+import { RedisCacheModule } from '../redis/redis.module';
 import { SearchModule } from '../search/search.module';
 import { PostController } from './controller/user.controller';
 
@@ -18,8 +21,15 @@ export const ALL_SERVICES = fs.readdirSync(path.join(path.dirname(__filename), '
 @Module({
   imports: [
     SearchModule,
+    RedisCacheModule,
+    CacheModule.register({
+      ttl: 5,
+      max: 100,
+    }),
+    EventEmitterModule.forRoot(),
+    ScheduleModule.forRoot(),
     DbModule.forRoot({ entities: ALL_ENTITIES }),
-    TypeOrmModule.forFeature(ALL_ENTITIES)
+    TypeOrmModule.forFeature(ALL_ENTITIES),
   ],
   controllers: [PostController],
   providers: [

@@ -3,16 +3,14 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { LoggerModule } from '../../logger/logger.module';
 import { DatabaseModule } from '../../database/database.module';
 import { AuthMiddleware } from '../core/middleware/middleware';
-import { SharedModule } from '../shared/shared.module';
 import { CompanyController } from './controller/company.controller';
 import { CompanyService } from './services/company.service';
+import { Company, CompanySchema } from './model/company';
 
 @Module({
   imports: [
-    SharedModule,
     LoggerModule,
     DatabaseModule.forRoot(),
-    ScheduleModule.forRoot(),
     MongooseModule
     .forFeature(
       [

@@ -5,12 +5,14 @@ import {
 import { ApiBadRequestResponse, ApiInternalServerErrorResponse, ApiOkResponse } from '@nestjs/swagger';
 import { RolesGuard } from '../../core/guard/role.guard';
 import { PARAMETERS_FAILED_VALIDATION } from '../../../app.constants';
-import { CompanyDTO } from '@zr-consulting/zota-npm';
 import { ValidateObjectId } from '../pipe/company.pipe';
 import { CompanyService } from '../services/company.service';
-import { Role } from '@zr-consulting/zota-npm';
 import { Roles } from '../../core/decorator/role.decorator';
+import { CompanyDTO } from '../dto/company.dto';
 
+export enum Role {
+  ADMIN= 'ADMIN'
+}
 @Controller('/api/v1/company')
 @UseGuards(RolesGuard)
 @UsePipes(new ValidationPipe({
@@ -28,22 +30,6 @@ export class CompanyController {
   @ApiInternalServerErrorResponse({ description: 'unable to fetch company details' })
   async getCompanies(@Res() res, @Req() req) {
     const company = await this.companyService.getAllCompany();
-    return res.status(HttpStatus.OK).json({
-      message: 'Company has been successfully fetched',
-      data: company
-    });
-  }
-
-  // access details of their own company // allow all
-  @Get('/')
-  @Roles(Role.ADMIN, Role.MANAGER, Role.ENTREPRENEURE, Role.DRIVER)
-  @HttpCode(HttpStatus.OK)
-  @ApiOkResponse({ description: 'Company has been successfully fetched' })
-  @ApiBadRequestResponse({ description: PARAMETERS_FAILED_VALIDATION })
-  @ApiInternalServerErrorResponse({ description: 'unable to fetch company details' })
-  async getUsers(@Res() res, @Req() req) {
-    const { companyId} = req.user;
-    const company = await this.companyService.getCurrentCompany(companyId);
     return res.status(HttpStatus.OK).json({
       message: 'Company has been successfully fetched',
       data: company
@@ -74,6 +60,7 @@ export class CompanyController {
       data: company
     });
   }
+
   @Roles(Role.ADMIN)
   @Put('/:companyId')
   @HttpCode(HttpStatus.OK)

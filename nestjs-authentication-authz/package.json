@@ -1,0 +1,79 @@
+{
+  "name": "zota-mz",
+  "version": "1.0.0",
+  "description": "api backend for zota",
+  "author": "",
+  "license": "MIT",
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "debug": "nodemon",
+    "format": "prettier --write \"src/**/*.ts\"",
+    "start": "ts-node -r tsconfig-paths/register src/main.ts",
+    "start:dev": "nodemon",
+    "prestart:prod": "rimraf dist && npm run build",
+    "start:prod": "node dist/main.js",
+    "lint": "./node_modules/.bin/tslint --project ./tsconfig.json -e 'src/test/**/*.*'",
+    "lint:fix": "./node_modules/.bin/tslint --project ./tsconfig.json -e 'src/test/**/*.*'  --fix",
+    "dev": "ts-node-dev --respawn --transpileOnly src/index.ts",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:cov": "jest --coverage",
+    "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
+    "test:e2e": "jest --config ./test/jest-e2e.json"
+  },
+  "dependencies": {
+    "@nestjs/common": "^7.0.0",
+    "@nestjs/core": "^7.0.0",
+    "@nestjs/mongoose": "^7.0.2",
+    "@nestjs/platform-express": "^7.0.0",
+    "@nestjs/swagger": "^4.5.5",
+    "cache-manager": "^3.4.0",
+    "cache-manager-ioredis": "^2.1.0",
+    "chai": "^4.2.0",
+    "chai-spies": "^1.0.0",
+    "class-transformer": "^0.2.3",
+    "class-validator": "^0.12.0-rc.0",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "firebase-admin": "^9.2.0",
+    "moment": "^2.25.3",
+    "mongoose": "^5.10.11",
+    "reflect-metadata": "^0.1.13",
+    "rimraf": "^2.6.2",
+    "rxjs": "^6.5.4",
+    "swagger-ui-express": "^4.1.4",
+    "tslint-sonarts": "^1.9.0",
+    "winston": "^3.2.1",
+    "yamljs": "^0.3.0"
+  },
+  "devDependencies": {
+    "@nestjs/testing": "^6.3.1",
+    "@types/express": "^4.16.0",
+    "@types/jest": "^23.3.13",
+    "@types/node": "^10.17.18",
+    "@types/supertest": "^2.0.7",
+    "jest": "^23.6.0",
+    "nodemon": "^1.18.9",
+    "prettier": "^1.15.3",
+    "supertest": "^3.4.1",
+    "ts-jest": "^23.10.5",
+    "ts-node": "^7.0.1",
+    "tsconfig-paths": "^3.7.0",
+    "tslint": "5.12.1",
+    "typescript": "3.7.2"
+  },
+  "jest": {
+    "moduleFileExtensions": [
+      "js",
+      "json",
+      "ts"
+    ],
+    "rootDir": "src",
+    "testRegex": ".spec.ts$",
+    "transform": {
+      "^.+\\.(t|j)s$": "ts-jest"
+    },
+    "coverageDirectory": "../coverage",
+    "testEnvironment": "node"
+  }
+}
